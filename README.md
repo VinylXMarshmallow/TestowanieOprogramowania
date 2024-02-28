@@ -21,6 +21,12 @@ source venv/bin/activate
 ```sh
 pip install django
 ```
+3a. Pakiety
+```sh
+pip install Pillow
+```
+
+
 4. Uruchomienie projektu
 1. windows
 ```sh 
