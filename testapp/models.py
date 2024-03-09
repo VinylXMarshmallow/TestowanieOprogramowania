@@ -10,3 +10,6 @@ class ListCars(models.Model):
 
     def __str__(self):
         return self.nameCar
+
+    class Meta:
+        db_table = 'listcars'
