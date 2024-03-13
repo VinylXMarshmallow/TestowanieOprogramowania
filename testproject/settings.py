@@ -117,17 +117,29 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = '/mediacar/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'mediacar')
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
+)
+import sentry_sdk
+
+sentry_sdk.init(
+    dsn="https://24d68db0eefdeecb3c4cd46eb9556a1b@o4506904079171584.ingest.us.sentry.io/4506904080678912",
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    traces_sample_rate=1.0,
+    # Set profiles_sample_rate to 1.0 to profile 100%
+    # of sampled transactions.
+    # We recommend adjusting this value in production.
+    profiles_sample_rate=1.0,
 )

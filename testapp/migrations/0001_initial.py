@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('content', models.TextField(default='')),
                 ('price', models.PositiveSmallIntegerField(default=1)),
                 ('year', models.PositiveSmallIntegerField(default=1800)),
-                ('imgCar', models.ImageField(blank=True, null=True, upload_to='mediacar')),
+                ('imgCar', models.ImageField(blank=True, null=True, upload_to='media')),
             ],
         ),
     ]
