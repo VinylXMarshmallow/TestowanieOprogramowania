@@ -22,13 +22,17 @@ from django.http import HttpResponse
 
 def trigger_error(request):
     division_by_zero = 1 / 0
+def index_error(request):
+    my_list = [1, 2, 3]
+    value = my_list[4]  # Ten kod spowoduje IndexError
 
 def index(request):
         return HttpResponse("Welcome to my Django project!")
 
 urlpatterns = [
     path('', index),  # Handle the root URL
-    path('sentry-debug/', trigger_error),
+    path('index-error/', index_error)
+    path('sentry-debug/', trigger_error, ),
     path('admin/', admin.site.urls),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
