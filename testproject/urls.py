@@ -15,10 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.http import HttpResponse
+
 
 def trigger_error(request):
     division_by_zero = 1 / 0
@@ -31,9 +32,10 @@ def index(request):
 
 urlpatterns = [
     path('', index),  # Handle the root URL
-    path('index-error/', index_error)
+    path('index-error/', index_error),
     path('sentry-debug/', trigger_error, ),
     path('admin/', admin.site.urls),
+    path ('testapp/', include('testapp.urls'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
