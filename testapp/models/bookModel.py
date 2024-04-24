@@ -4,6 +4,7 @@ from datetime import datetime,timedelta
 from datetime import date
 
 class Book(models.Model):
+    objects = None
     title = models.CharField(max_length=100)
     author=models.CharField(max_length=100)
     genre=models.CharField(max_length=100,  blank=True)

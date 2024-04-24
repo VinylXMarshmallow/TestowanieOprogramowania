@@ -20,3 +20,19 @@ class BookModelTest(TestCase):
 
         self.assertTrue(popular_book.is_popular())
         self.assertFalse(not_popular_book.is_popular())
+
+    def test_book_creation(self):
+        book = Book.objects.get(title="Test Book")
+        self.assertEqual(book.author, "Author Name")
+        self.assertEqual(book.borrow_count,101)
+
+    def test_genre(self):
+        book = Book.objects.get(title="Test Book")
+        book.genre = "Fantasy"
+        book.save()
+        self.assertEqual(book.genre,"Fantasy")
+    def test_string_representation(self):
+        book = Book.objects.get(title="Test Book")
+        self.assertEqual(book.string_representation(),"Test Book by Author Name")
+
+
