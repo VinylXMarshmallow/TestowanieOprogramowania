@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
-from testapp.models import Book
+from testapp.models import Book, Music
 
 from datetime import datetime, timedelta
 
@@ -35,4 +35,21 @@ class BookModelTest(TestCase):
         book = Book.objects.get(title="Test Book")
         self.assertEqual(book.string_representation(),"Test Book by Author Name")
 
+class MusicModelTest(TestCase):
+    def setUp(self):
+        Music.objects.create(title="Bohemian Rhapsody", author="Queen", genre="Rock", popular=100)
+        Music.objects.create(title="Shape of You", author="Ed Sheeran", genre="Pop", popular=200)
 
+    def test_str_representation(self):
+        bohemian_rhapsody = Music.objects.get(title="Bohemian Rhapsody")
+        shape_of_you = Music.objects.get(title="Shape of You")
+
+        self.assertEqual(str(bohemian_rhapsody), "Bohemian Rhapsody")
+        self.assertEqual(str(shape_of_you), "Shape of You")
+
+    def test_is_popular(self):
+        bohemian_rhapsody = Music.objects.get(title="Bohemian Rhapsody")
+        shape_of_you = Music.objects.get(title="Shape of You")
+
+        self.assertTrue(bohemian_rhapsody.popular > 0)
+        self.assertTrue(shape_of_you.popular > 0)
